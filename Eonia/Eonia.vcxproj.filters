@@ -27,6 +27,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Graphics\Textures\Mobs\dummy" />
+    <None Include="Graphics\Textures\Structures\dummy" />
+    <None Include="Graphics\Textures\Terrain\dummy" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Graphics\Render.h">

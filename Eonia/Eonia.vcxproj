@@ -115,6 +115,9 @@
     <ClCompile Include="Graphics\Textures\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Graphics\Textures\Mobs\dummy" />
+    <None Include="Graphics\Textures\Structures\dummy" />
+    <None Include="Graphics\Textures\Terrain\dummy" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
