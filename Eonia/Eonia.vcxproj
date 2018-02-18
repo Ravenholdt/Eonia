@@ -110,19 +110,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Graphics\Render.cpp" />
+    <ClCompile Include="Render\Engine.cpp" />
     <ClCompile Include="Eonia.cpp" />
-    <ClCompile Include="Graphics\Textures\Texture.cpp" />
+    <ClCompile Include="Render\Textures\Texture.cpp" />
+    <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphics\Textures\Mobs\dummy" />
-    <None Include="Graphics\Textures\Structures\dummy" />
-    <None Include="Graphics\Textures\Terrain\dummy" />
+    <None Include="Render\Textures\Items\dummy" />
+    <None Include="Render\Textures\Mobs\dummy" />
+    <None Include="Render\Textures\Structures\dummy" />
+    <None Include="Render\Textures\Terrain\dummy" />
     <None Include="packages.config" />
+    <None Include="Render\Textures\UI\dummy" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Graphics\Render.h" />
-    <ClInclude Include="Graphics\Textures\Texture.h" />
+    <ClInclude Include="Render\Engine.h" />
+    <ClInclude Include="Render\Textures\Texture.h" />
+    <ClInclude Include="World\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

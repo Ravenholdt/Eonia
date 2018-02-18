@@ -1,6 +1,10 @@
 #include <SFML\Graphics.hpp>
+#include <SFML\System.hpp>
 
-#include "Graphics\Render.h"
+#include "Render\Engine.h"
+#include "World\World.h"
+
+#include <iostream>
 
 int main()
 {
@@ -10,12 +14,10 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(width, height), "GOOD STUFF!");
 
-	sf::RectangleShape worldScreen(sf::Vector2f(600.f, 440.f));
-	worldScreen.setFillColor(sf::Color::Green);
-	
-	sf::RectangleShape menuScreen(sf::Vector2f(200.f, 600.f));
-	menuScreen.setPosition(sf::Vector2f(600.f, 0.f));
-	menuScreen.setFillColor(sf::Color(120, 60, 20));
+	Engine engine;
+	engine.init(window);
+
+	World world;
 	
 	while (window.isOpen())
 	{
@@ -24,13 +26,26 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+					engine.posY--;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+					engine.posY++;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+					engine.posX--;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+					engine.posX++;
+			}
+
 		}
 
 		window.clear();
-		window.draw(worldScreen);
-		window.draw(menuScreen);
-		Render(window);
+		engine.RenderUI();
 		window.display();
+
+		std::cout << engine.posX << ", " << engine.posY << std::endl;
+
 	}
 
 	return 0;

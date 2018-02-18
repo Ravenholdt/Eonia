@@ -18,24 +18,32 @@
     <ClCompile Include="Eonia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\Render.cpp">
+    <ClCompile Include="Render\Textures\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Graphics\Textures\Texture.cpp">
+    <ClCompile Include="Render\Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Graphics\Textures\Mobs\dummy" />
-    <None Include="Graphics\Textures\Structures\dummy" />
-    <None Include="Graphics\Textures\Terrain\dummy" />
+    <None Include="Render\Textures\Items\dummy" />
+    <None Include="Render\Textures\Mobs\dummy" />
+    <None Include="Render\Textures\Structures\dummy" />
+    <None Include="Render\Textures\Terrain\dummy" />
+    <None Include="Render\Textures\UI\dummy" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Graphics\Render.h">
+    <ClInclude Include="Render\Textures\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics\Textures\Texture.h">
+    <ClInclude Include="Render\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
