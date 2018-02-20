@@ -36,6 +36,8 @@ int main()
 					engine.posX--;
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 					engine.posX++;
+
+				std::cout << engine.posX << ", " << engine.posY << std::endl;
 			}
 
 		}
@@ -43,8 +45,6 @@ int main()
 		window.clear();
 		engine.RenderUI();
 		window.display();
-
-		std::cout << engine.posX << ", " << engine.posY << std::endl;
 
 	}
 

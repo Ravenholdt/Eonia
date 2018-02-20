@@ -110,6 +110,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="World\Terrain\Terrain.cpp" />
+    <ClCompile Include="World\Items\Item.cpp" />
     <ClCompile Include="Render\Engine.cpp" />
     <ClCompile Include="Eonia.cpp" />
     <ClCompile Include="Render\Textures\Texture.cpp" />
@@ -124,6 +126,8 @@
     <None Include="Render\Textures\UI\dummy" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="World\Terrain\Terrain.h" />
+    <ClInclude Include="World\Items\Item.h" />
     <ClInclude Include="Render\Engine.h" />
     <ClInclude Include="Render\Textures\Texture.h" />
     <ClInclude Include="World\World.h" />
