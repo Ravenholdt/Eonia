@@ -36,13 +36,13 @@ int main()
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
 					window.close();
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-					world.moveSquare(1, 0);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-					world.moveSquare(-1, 0);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-					world.moveSquare(0, -1);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 					world.moveSquare(0, 1);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+					world.moveSquare(0, -1);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+					world.moveSquare(-1, 0);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+					world.moveSquare(1, 0);
 
 				world.getPlayerPos(posX, posY);
 				std::cout << posX << ", " << posY << std::endl;
