@@ -14,10 +14,15 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(width, height), "GOOD STUFF!");
 
-	Engine engine;
-	engine.init(window);
-
+	// Create the world
 	World world;
+	world.setSquare(50, 50);
+
+	// Initiate the game engine
+	Engine engine;
+	engine.init(window, world);
+
+	int posX, posY;
 	
 	while (window.isOpen())
 	{
@@ -28,16 +33,19 @@ int main()
 				window.close();
 			if (event.type == sf::Event::KeyPressed)
 			{
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-					engine.posY--;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-					engine.posY++;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-					engine.posX--;
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-					engine.posX++;
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+					window.close();
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+					world.moveSquare(1, 0);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+					world.moveSquare(-1, 0);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+					world.moveSquare(0, -1);
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+					world.moveSquare(0, 1);
 
-				std::cout << engine.posX << ", " << engine.posY << std::endl;
+				world.getPlayerPos(posX, posY);
+				std::cout << posX << ", " << posY << std::endl;
 			}
 
 		}

@@ -4,9 +4,32 @@
 
 Terrain::Terrain()
 {
+	type = "none";
+
+	passable = false;
+	cutable = false;
+
+	walkingSpeed = 1;
+}
+
+Terrain::~Terrain()
+{
+}
+
+std::string Terrain::getType()
+{
+	return type;
 }
 
 
-Terrain::~Terrain()
+// Grass Terrain
+Grass::Grass()
+{
+	type = "grass";
+	passable = true;
+}
+
+
+Grass::~Grass()
 {
 }

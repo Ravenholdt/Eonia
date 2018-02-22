@@ -1,14 +1,29 @@
 #pragma once
+
+#include <SFML\Graphics.hpp>
+#include <string>
+
 class Terrain
 {
 public:
 	Terrain();
 	~Terrain();
 
-private:
+	std::string getType();
+
+protected:
+	std::string type;
+
 	bool passable;
 	bool cutable;
 
-	int walkingSpeed;
+	float walkingSpeed;
 };
 
+
+class Grass : public Terrain
+{
+public:
+	Grass();
+	~Grass();
+};

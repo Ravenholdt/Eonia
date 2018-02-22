@@ -18,9 +18,6 @@
     <ClCompile Include="Eonia.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Render\Textures\Texture.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Render\Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,19 +30,25 @@
     <ClCompile Include="World\Terrain\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="World\Mobs\mob.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Textures\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Render\Textures\Items\dummy" />
-    <None Include="Render\Textures\Mobs\dummy" />
-    <None Include="Render\Textures\Structures\dummy" />
-    <None Include="Render\Textures\Terrain\dummy" />
-    <None Include="Render\Textures\UI\dummy" />
+    <None Include="Textures\Items\dummy" />
+    <None Include="Textures\Mobs\dummy" />
+    <None Include="Textures\Structures\dummy" />
+    <None Include="Textures\Terrain\dummy" />
+    <None Include="Textures\UI\dummy" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Render\Textures\Texture.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Render\Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -56,6 +59,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="World\Terrain\Terrain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Mobs\mob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Textures\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

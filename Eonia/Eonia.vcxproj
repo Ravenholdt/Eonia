@@ -110,26 +110,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Textures\Sprite.cpp" />
+    <ClCompile Include="World\Mobs\mob.cpp" />
     <ClCompile Include="World\Terrain\Terrain.cpp" />
     <ClCompile Include="World\Items\Item.cpp" />
     <ClCompile Include="Render\Engine.cpp" />
     <ClCompile Include="Eonia.cpp" />
-    <ClCompile Include="Render\Textures\Texture.cpp" />
+    <ClCompile Include="Textures\Texture.cpp" />
     <ClCompile Include="World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Render\Textures\Items\dummy" />
-    <None Include="Render\Textures\Mobs\dummy" />
-    <None Include="Render\Textures\Structures\dummy" />
-    <None Include="Render\Textures\Terrain\dummy" />
+    <None Include="Textures\Items\dummy" />
+    <None Include="Textures\Mobs\dummy" />
+    <None Include="Textures\Structures\dummy" />
+    <None Include="Textures\Terrain\dummy" />
     <None Include="packages.config" />
-    <None Include="Render\Textures\UI\dummy" />
+    <None Include="Textures\UI\dummy" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Textures\Sprite.h" />
+    <ClInclude Include="World\Mobs\mob.h" />
     <ClInclude Include="World\Terrain\Terrain.h" />
     <ClInclude Include="World\Items\Item.h" />
     <ClInclude Include="Render\Engine.h" />
-    <ClInclude Include="Render\Textures\Texture.h" />
+    <ClInclude Include="Textures\Texture.h" />
     <ClInclude Include="World\World.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
