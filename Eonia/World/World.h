@@ -22,6 +22,6 @@ private:
 	int posX;
 	int posY;
 
-	Terrain map[100][100] = { Grass() };
+	Terrain map[100][100];
 	//std::map<std::string, Terrain> Map;
 };

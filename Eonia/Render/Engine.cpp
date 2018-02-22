@@ -21,6 +21,7 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 	world->getPlayerPos(posX, posY);
 	
 	Texture texture;
+	terrainLoad();
 }
 
 void Engine::RenderUI()
@@ -36,6 +37,14 @@ void Engine::RenderUI()
 void Engine::RenderWorld()
 {
 
+	terrainUpdate();
+
+	sf::Font font;
+	font.loadFromFile("Render/Roboto.ttf");
+
+	sf::Text text("Test", font);
+	text.setCharacterSize(30);
+
 	//sf::Texture text;
 	//text.loadFromFile("Textures/Terrain/grass.png");
 	//sprite.setTexture(text);
@@ -44,15 +53,29 @@ void Engine::RenderWorld()
 
 	//sprite.setTexture( texture.getTexture(std::string("grass")) );
 
-	terrainLoad();
+	//terrainLoad();
+
+	int rend = 0;
+	float tileSize = 40;
+
+	int _y = 0;
 
 	// Render the game map
-	for (int y = 0; y < 13; y++)
+	for (int y = 12; y >= 0; y--) // Needs to be inverted to start the logic position from bottom left.
 	{
 		for (int x = 0; x < 17; x++)
 		{
+			_y = 12 - y;
+			std::string stringX = std::to_string(x + posX - 8);
+			std::string stringY = std::to_string(y + posY - 6);
+			sf::Text text(stringX + "," + stringY, font);
+			text.setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
+			text.setCharacterSize(9);
 			//sprite.setTexture(texture.getTexture());
+			terrain[x][y].setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
 			window->draw(terrain[x][y]);
+			window->draw(text);
+			rend++;
 		}
 	}
 }
@@ -99,27 +122,22 @@ void Engine::terrainLoad()
 	{
 		for (int y = 0; y < 13; y++)
 		{
-			std::string tmp = "grass";
-			if (x + posX == 58 && y + posY == 56) { tmp = "none"; }
-			terrain[x][y].setTexture( texture.getTexture(tmp) );
-			terrain[x][y].setPosition(sf::Vector2f((x - 1)*tileSize, (y - 1)*tileSize ) );
+			terrain[x][y].setTexture( texture.getTexture( world->getSquare(x + posX, y + posY) ) );
 			terrain[x][y].setTextureRect(sf::IntRect(tileSize*(tile), 0, tileSize, tileSize));
 		}
 	}
 }
 
+// Check if the players has moved and reload the map if they have.
 void Engine::terrainUpdate()
 {
 	int x = posX, y=posY;
 	world->getPlayerPos(posX, posY);
 	x = posX - x;
 	y = posY - y;
-	if (x) // Move up or down
+	if (x || y)
 	{
-
-	}
-	if (y) // Move right or left
-	{
-
+		std::cout << "Moved" << std::endl;
+		terrainLoad();
 	}
 }

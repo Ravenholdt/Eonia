@@ -4,6 +4,15 @@
 
 World::World()
 {
+	for (int x = 0; x < 100; x++)
+	{
+		for (int y = 0; y < 100; y++)
+		{
+			Grass grass;
+			map[x][y] = grass;
+			if (y == 50 && x == 50) { Terrain none; map[x][y] = none; }
+		}
+	}
 }
 
 
