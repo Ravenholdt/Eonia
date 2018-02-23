@@ -131,7 +131,9 @@ void Engine::terrainLoad()
 // Check if the players has moved and reload the map if they have.
 void Engine::terrainUpdate()
 {
-	int x = posX, y=posY;
+	terrainLoad(); // Always update the map.
+
+	/*int x = posX, y=posY;
 	world->getPlayerPos(posX, posY);
 	x = posX - x;
 	y = posY - y;
@@ -139,5 +141,5 @@ void Engine::terrainUpdate()
 	{
 		std::cout << "Moved" << std::endl;
 		terrainLoad();
-	}
+	}*/
 }

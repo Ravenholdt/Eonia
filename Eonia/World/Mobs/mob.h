@@ -1,10 +1,12 @@
 #pragma once
 
-class mob
+#include <SFML\System.hpp>
+
+class Mob
 {
 public:
-	mob();
-	~mob();
+	Mob();
+	~Mob();
 
 	void getPos(int& x, int& y);
 
@@ -16,11 +18,21 @@ public:
 	void move(int x, int y);
 
 protected:
-	int posX, posY;
-	
+	int posX = 0, posY = 0;
 	int health, mana;
 
 	float moveSpeed;
+	sf::Time moveDelay;
 
 };
 
+
+class Player : public Mob
+{
+public:
+	Player();
+	~Player();
+
+private:
+
+};

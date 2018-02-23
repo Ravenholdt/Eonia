@@ -1,37 +1,46 @@
 #include "mob.h"
 
-mob::mob()
+Mob::Mob()
 {
 }
 
 
-mob::~mob()
+Mob::~Mob()
 {
 }
 
-int mob::getMana()
+int Mob::getMana()
 {
 	return mana;
 }
 
-int mob::getHealth()
+int Mob::getHealth()
 {
 	return health;
 }
 
-float mob::getSpeed()
+float Mob::getSpeed()
 {
 	return moveSpeed;
 }
 
-void mob::getPos(int& x, int& y)
+void Mob::getPos(int& x, int& y)
 {
 	x = posX;
 	y = posY;
 }
 
-void mob::move(int x, int y)
+void Mob::move(int x, int y)
 {
 	posX += x;
 	posY += y;
+}
+
+
+Player::Player()
+{
+}
+
+Player::~Player()
+{
 }

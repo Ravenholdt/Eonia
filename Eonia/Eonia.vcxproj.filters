@@ -30,13 +30,13 @@
     <ClCompile Include="World\Terrain\Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World\Mobs\mob.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Textures\Sprite.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Textures\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World\Mobs\Mob.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -61,13 +61,13 @@
     <ClInclude Include="World\Terrain\Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="World\Mobs\mob.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Textures\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Textures\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="World\Mobs\Mob.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

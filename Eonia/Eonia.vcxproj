@@ -111,7 +111,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Textures\Sprite.cpp" />
-    <ClCompile Include="World\Mobs\mob.cpp" />
+    <ClCompile Include="World\Mobs\Mob.cpp" />
     <ClCompile Include="World\Terrain\Terrain.cpp" />
     <ClCompile Include="World\Items\Item.cpp" />
     <ClCompile Include="Render\Engine.cpp" />
@@ -129,7 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Textures\Sprite.h" />
-    <ClInclude Include="World\Mobs\mob.h" />
+    <ClInclude Include="World\Mobs\Mob.h" />
     <ClInclude Include="World\Terrain\Terrain.h" />
     <ClInclude Include="World\Items\Item.h" />
     <ClInclude Include="Render\Engine.h" />

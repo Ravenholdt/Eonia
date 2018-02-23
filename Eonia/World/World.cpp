@@ -4,6 +4,7 @@
 
 World::World()
 {
+	// Generate world map.
 	for (int x = 0; x < 100; x++)
 	{
 		for (int y = 0; y < 100; y++)
@@ -13,6 +14,9 @@ World::World()
 			if (y == 50 && x == 50) { Terrain none; map[x][y] = none; }
 		}
 	}
+
+	// Load caracter.
+	player = Player();
 }
 
 
@@ -27,18 +31,19 @@ std::string World::getSquare(int x, int y)
 
 void World::getPlayerPos(int& x, int& y)
 {
-	x = posX;
-	y = posY;
+	player.getPos(x, y);
 }
 
 void World::moveSquare(int x, int y)
 {
-	posX += x;
-	posY += y;
+	player.move(x, y);
+	//posX += x;
+	//posY += y;
 }
 
 void World::setSquare(int x, int y)
 {
-	posX = x;
-	posY = y;
+	player.move(x, y);
+	//posX = x;
+	//posY = y;
 }

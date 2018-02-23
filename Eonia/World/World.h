@@ -4,6 +4,7 @@
 #include <string>
 
 #include "Terrain\Terrain.h"
+#include "Mobs\Mob.h"
 
 class World
 {
@@ -18,6 +19,8 @@ public:
 	void setSquare(int x, int y);
 
 private:
+
+	Player player;
 
 	int posX;
 	int posY;
