@@ -7,6 +7,7 @@ Texture::Texture()
 	// Items
 
 	// Mobs
+	texture["player"].loadFromFile("Textures/Mobs/player.png");
 
 	// Structures
 
