@@ -3,6 +3,7 @@
 #include <SFML\Graphics.hpp>
 
 #include "..\Textures\Texture.h"
+#include "..\World\Mobs\mob.h"
 //#include "Textures\Sprite.h"
 
 #include "..\World\World.h"
@@ -25,7 +26,6 @@ private:
 	World* world;
 
 	Texture texture;
-	//Sprite grass;
 
 	sf::Sprite sprite;
 
@@ -35,6 +35,8 @@ private:
 	sf::Sprite terrain[17][13] = { sf::Sprite() };
 
 	// Character Information
+	Player player;
+
 	void RenderCharacterHealth();
 	void RenderCharacterMana();
 

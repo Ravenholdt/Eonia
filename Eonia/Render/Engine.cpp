@@ -45,37 +45,35 @@ void Engine::RenderWorld()
 	sf::Text text("Test", font);
 	text.setCharacterSize(30);
 
-	//sf::Texture text;
-	//text.loadFromFile("Textures/Terrain/grass.png");
-	//sprite.setTexture(text);
-
 	world->getSquare(posX, posY);
-
-	//sprite.setTexture( texture.getTexture(std::string("grass")) );
 
 	//terrainLoad();
 
-	int rend = 0;
 	float tileSize = 40;
 
 	int _y = 0;
 
+	int tilesX = 17, tilesY = 13; // NUmber of tiles in X and Y
+
 	// Render the game map
-	for (int y = 12; y >= 0; y--) // Needs to be inverted to start the logic position from bottom left.
+	for (int y = tilesY - 1; y >= 0; y--) // Needs to be inverted to start the logic position from bottom left.
 	{
-		for (int x = 0; x < 17; x++)
+		for (int x = 0; x < tilesX; x++)
 		{
-			_y = 12 - y;
+			_y = tilesY - 1 - y;
+
+			//sprite.setTexture(texture.getTexture());
+			terrain[x][y].setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
+			window->draw(terrain[x][y]);
+
+			// Cord text
 			std::string stringX = std::to_string(x + posX - 8);
 			std::string stringY = std::to_string(y + posY - 6);
 			sf::Text text(stringX + "," + stringY, font);
 			text.setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
 			text.setCharacterSize(9);
-			//sprite.setTexture(texture.getTexture());
-			terrain[x][y].setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
-			window->draw(terrain[x][y]);
+
 			window->draw(text);
-			rend++;
 		}
 	}
 }

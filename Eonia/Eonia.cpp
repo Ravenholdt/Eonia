@@ -8,11 +8,12 @@
 
 int main()
 {
+	// Initiate window.
 	int width, height;
 	width = 800;
 	height = 600;
 
-	sf::RenderWindow window(sf::VideoMode(width, height), "GOOD STUFF!");
+	sf::RenderWindow window(sf::VideoMode(width, height), "Eonia");
 
 	// Create the world
 	World world;
@@ -23,9 +24,16 @@ int main()
 	engine.init(window, world);
 
 	int posX, posY;
-	
+
+	int framerate = 120;
+	int frametime = 1000 / 120; //Render takes too long for this rate.
+	sf::Clock clock;
+
+	// Game loop.
 	while (window.isOpen())
 	{
+		clock.restart();
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
@@ -54,6 +62,8 @@ int main()
 		engine.RenderUI();
 		window.display();
 
+
+		while (clock.getElapsedTime().asMilliseconds() <  )
 	}
 
 	return 0;

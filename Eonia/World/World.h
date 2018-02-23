@@ -25,6 +25,8 @@ private:
 	int posX;
 	int posY;
 
+	int tick;
+
 	Terrain map[100][100];
 	//std::map<std::string, Terrain> Map;
 };
