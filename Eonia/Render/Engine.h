@@ -42,5 +42,5 @@ private:
 	void RenderCharacterHealth();
 	void RenderCharacterMana();
 
-	int posX, posY;
+	float posX, posY;
 };

@@ -34,9 +34,9 @@ std::string World::getSquare(int x, int y)
 	return map[x][y].getType(); //Return the type of terrain
 }
 
-void World::getPlayerPos(int& x, int& y)
+void World::getPlayerPosFloat(float& x, float& y)
 {
-	player.getPos(x, y);
+	player.getFloatPos(x, y, currentTick, tickrate);
 }
 
 void World::moveSquare(int x, int y)

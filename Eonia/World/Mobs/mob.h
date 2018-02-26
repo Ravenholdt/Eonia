@@ -10,7 +10,7 @@ public:
 
 	void initiate(int id);
 	void getPos(int& x, int& y);
-	void getFloatPos(float& x, float& y, int tick);
+	void getFloatPos(float& x, float& y, int tick, int tickrate);
 
 	int getMana();
 	int getHealth();

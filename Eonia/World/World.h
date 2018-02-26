@@ -13,7 +13,7 @@ public:
 	~World();
 
 	std::string getSquare(int x, int y);
-	void getPlayerPos(int& x, int& y);
+	void getPlayerPosFloat(float& x, float& y);
 
 	void moveSquare(int x, int y);
 	void setSquare(int x, int y);

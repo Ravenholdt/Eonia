@@ -38,13 +38,21 @@ void Mob::getPos(int& x, int& y)
 	y = posY;
 }
 
-void Mob::getFloatPos(float& x, float& y, int tick)
+void Mob::getFloatPos(float& x, float& y, int tick, int tickrate)
 {
-	float Dx = posX - lastPosX;
-	float Dy = posY - lastPosY;
+	if (EndMoveBy > tick)
+	{
+		float Dx = posX - lastPosX;
+		float Dy = posY - lastPosY;
 
-	x = posX - Dx * (1); // Logic for movement - incomplete!
-	y = posY - Dy * (1); //
+		x = posX - Dx * (EndMoveBy - tick) / tickrate;
+		y = posY - Dy * (EndMoveBy - tick) / tickrate;
+	}
+	else 
+	{
+		x = posX;
+		y = posY;
+	}
 }
 
 bool Mob::move(int x, int y, int tick, int moveDelay)

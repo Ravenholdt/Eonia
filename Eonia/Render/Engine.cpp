@@ -19,7 +19,7 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 	window = &_window;
 	world = &_world;
 
-	world->getPlayerPos(posX, posY);
+	world->getPlayerPosFloat(posX, posY);
 	Texture texture;
 
 	// Load text font
@@ -142,7 +142,7 @@ void Engine::RenderCharacterMana()
 // Load the terrain
 void Engine::terrainLoad()
 {
-	world->getPlayerPos(posX, posY);
+	world->getPlayerPosFloat(posX, posY);
 
 	float tileSize = 40;
 	int tile = 2;
