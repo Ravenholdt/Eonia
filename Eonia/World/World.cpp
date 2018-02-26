@@ -17,6 +17,11 @@ World::World()
 
 	// Load caracter.
 	player = Player();
+
+	// Set up tick rate.
+	tickrate = 60; // Ticks per second.
+	ticktime = 1000 / tickrate; // Time per tick.
+	currentTick = 0;
 }
 
 
@@ -36,14 +41,30 @@ void World::getPlayerPos(int& x, int& y)
 
 void World::moveSquare(int x, int y)
 {
-	player.move(x, y);
+	player.move(x, y, currentTick, tickrate);
 	//posX += x;
 	//posY += y;
 }
 
 void World::setSquare(int x, int y)
 {
-	player.move(x, y);
+	player.move(x, y, currentTick, 0);
 	//posX = x;
 	//posY = y;
+}
+
+int World::nextTick()
+{
+	currentTick++;
+	return currentTick;
+}
+
+int World::getTick()
+{
+	return currentTick;
+}
+
+int World::getTickTime()
+{
+	return ticktime;
 }

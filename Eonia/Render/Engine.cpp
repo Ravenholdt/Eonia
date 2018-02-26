@@ -1,6 +1,7 @@
 
 #include <string>
 #include <iostream> //Debug
+#include <SFML\System.hpp> //Debug - Time
 
 #include "Engine.h"
 #include "..\Textures\Texture.h"
@@ -19,28 +20,35 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 	world = &_world;
 
 	world->getPlayerPos(posX, posY);
-	
 	Texture texture;
+
+	// Load text font
+	font.loadFromFile("Render/Roboto.ttf");
+
 	terrainLoad();
+
 }
 
 void Engine::RenderUI()
 {
-
 	RenderWorld(); // Render the center screen
 	RenderCharacter(); // Rener the right screen
 	
+	
+	RenderDebug(); // Debug interface.
 
 	// Render inventory
+
 }
 
 void Engine::RenderWorld()
 {
+	sf::Clock clock;
+	clock.restart();
+
 
 	terrainUpdate();
-
-	sf::Font font;
-	font.loadFromFile("Render/Roboto.ttf");
+	//std::cout << clock.restart().asMilliseconds() << ", ";
 
 	sf::Text text("Test", font);
 	text.setCharacterSize(30);
@@ -55,6 +63,9 @@ void Engine::RenderWorld()
 
 	int tilesX = 17, tilesY = 13; // NUmber of tiles in X and Y
 
+	std::string stringX = std::to_string(posX);
+	std::string stringY = std::to_string(posY);
+
 	// Render the game map
 	for (int y = tilesY - 1; y >= 0; y--) // Needs to be inverted to start the logic position from bottom left.
 	{
@@ -67,20 +78,40 @@ void Engine::RenderWorld()
 			window->draw(terrain[x][y]);
 
 			// Cord text
-			std::string stringX = std::to_string(x + posX - 8);
-			std::string stringY = std::to_string(y + posY - 6);
+			/*stringX = std::to_string(x + posX - 8);
+			stringY = std::to_string(y + posY - 6);
 			sf::Text text(stringX + "," + stringY, font);
 			text.setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
 			text.setCharacterSize(9);
 
-			window->draw(text);
+			window->draw(text);*/
 		}
 	}
+
+	// Render the player.
+}
+
+void Engine::RenderDebug()
+{
+	// Render Position for bebug.
+	std::string stringX = std::to_string(posX);
+	std::string stringY = std::to_string(posY);
+
+	sf::Text text(stringX + "," + stringY, font);
+	text.setCharacterSize(30);
+	text.setPosition(sf::Vector2f(640, 70));
+	window->draw(text);
+
+	std::string stringTick = std::to_string(world->getTick());
+	text = sf::Text (stringTick, font);
+	text.setPosition(sf::Vector2f(640, 110));
+	window->draw(text);
 }
 
 void Engine::RenderCharacter()
 {
 	// Render the right parth of the screen.
+
 
 	// Render Health and Mana bar
 	RenderCharacterHealth();
@@ -121,7 +152,7 @@ void Engine::terrainLoad()
 		for (int y = 0; y < 13; y++)
 		{
 			terrain[x][y].setTexture( texture.getTexture( world->getSquare(x + posX, y + posY) ) );
-			terrain[x][y].setTextureRect(sf::IntRect(tileSize*(tile), 0, tileSize, tileSize));
+			terrain[x][y].setTextureRect( sf::IntRect(tileSize*(tile), 0, tileSize, tileSize) );
 		}
 	}
 }

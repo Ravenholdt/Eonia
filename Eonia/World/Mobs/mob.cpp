@@ -2,11 +2,19 @@
 
 Mob::Mob()
 {
+	healthMax = 10, manaMax = 10;
+	health = 10, mana = 10;
+
+	moveSpeed = 1;
+	EndMoveBy = 0;
 }
 
+Mob::~Mob() {}
 
-Mob::~Mob()
+
+void Mob::initiate(int id)
 {
+	mobID = id;
 }
 
 int Mob::getMana()
@@ -30,17 +38,45 @@ void Mob::getPos(int& x, int& y)
 	y = posY;
 }
 
-void Mob::move(int x, int y)
+void Mob::getFloatPos(float& x, float& y, int tick)
 {
-	posX += x;
-	posY += y;
+	float Dx = posX - lastPosX;
+	float Dy = posY - lastPosY;
+
+	x = posX - Dx * (1); // Logic for movement - incomplete!
+	y = posY - Dy * (1); //
 }
 
+bool Mob::move(int x, int y, int tick, int moveDelay)
+{
+	if (EndMoveBy <= tick)
+	{
+		lastPosX = posX;
+		lastPosY = posY;
 
+		posX += x;
+		posY += y;
+		EndMoveBy = tick + moveSpeed * moveDelay;
+		BeginMoveBy = tick;
+		return true;
+	}
+	return false;
+}
+
+// Player -----------------------------
 Player::Player()
 {
+	healthMax = 50, manaMax = 50;
+	health = 50, mana = 50;
+	moveSpeed = 0.3f;
 }
 
-Player::~Player()
+Player::~Player() {}
+
+// Rat --------------------------------
+Rat::Rat()
 {
+	health = 5, mana = 0;
 }
+
+Rat::~Rat() {}

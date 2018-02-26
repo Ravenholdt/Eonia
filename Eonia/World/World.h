@@ -18,6 +18,10 @@ public:
 	void moveSquare(int x, int y);
 	void setSquare(int x, int y);
 
+	int nextTick();
+	int getTick();
+	int getTickTime();
+
 private:
 
 	Player player;
@@ -25,7 +29,10 @@ private:
 	int posX;
 	int posY;
 
-	int tick;
+	// Frames per second settings
+	int tickrate;
+	int currentTick;
+	int ticktime;
 
 	Terrain map[100][100];
 	//std::map<std::string, Terrain> Map;

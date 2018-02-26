@@ -26,11 +26,13 @@ private:
 	World* world;
 
 	Texture texture;
+	sf::Font font;
 
 	sf::Sprite sprite;
 
 	void RenderWorld();
 	void RenderCharacter();
+	void RenderDebug();
 
 	sf::Sprite terrain[17][13] = { sf::Sprite() };
 

@@ -8,22 +8,32 @@ public:
 	Mob();
 	~Mob();
 
+	void initiate(int id);
 	void getPos(int& x, int& y);
+	void getFloatPos(float& x, float& y, int tick);
 
 	int getMana();
 	int getHealth();
 
 	float getSpeed();
 
-	void move(int x, int y);
+	bool move(int x, int y, int tick, int moveDelay);
 
 protected:
+	int mobID;
+
 	int posX = 0, posY = 0;
+	int lastPosX = 0, lastPosY = 0;
+
 	int health, mana;
+	int healthMax, manaMax;
 
+	// Move logic
 	float moveSpeed;
-	sf::Time moveDelay;
+	int BeginMoveBy;
+	int EndMoveBy;
 
+	bool hostile;
 };
 
 
@@ -35,4 +45,13 @@ public:
 
 private:
 
+};
+
+class Rat : public Mob
+{
+public:
+	Rat();
+	~Rat();
+
+private:
 };

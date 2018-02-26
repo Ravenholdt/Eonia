@@ -5,15 +5,13 @@
 #include "World\World.h"
 
 #include <iostream>
+#include <future> // std::async
 
 int main()
 {
-	// Initiate window.
-	int width, height;
-	width = 800;
-	height = 600;
+	int screenWidth = 800, screenHeight = 600;
 
-	sf::RenderWindow window(sf::VideoMode(width, height), "Eonia");
+	sf::RenderWindow window(sf::VideoMode(screenWidth, screenHeight), "Eonia");;
 
 	// Create the world
 	World world;
@@ -25,45 +23,50 @@ int main()
 
 	int posX, posY;
 
-	int framerate = 120;
-	int frametime = 1000 / 120; //Render takes too long for this rate.
+	bool renderLoopBool = false;
+
 	sf::Clock clock;
 
 	// Game loop.
 	while (window.isOpen())
 	{
 		clock.restart();
+		world.nextTick();
 
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-					window.close();
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-					world.moveSquare(0, 1);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-					world.moveSquare(0, -1);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-					world.moveSquare(-1, 0);
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-					world.moveSquare(1, 0);
-
-				world.getPlayerPos(posX, posY);
-				std::cout << posX << ", " << posY << std::endl;
-			}
-
+			//if (event.type == sf::Event::KeyPressed)
 		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			window.close();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+			world.moveSquare(0, 1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+			world.moveSquare(0, -1);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			world.moveSquare(-1, 0);
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+			world.moveSquare(1, 0);
 
+		//world.getPlayerPos(posX, posY);
+		//std::cout << posX << ", " << posY << std::endl;
+
+
+		// Begin render
 		window.clear();
+		
 		engine.RenderUI();
+
+		// End render
 		window.display();
+		
 
-
-		while (clock.getElapsedTime().asMilliseconds() <  )
+		std::cout << clock.getElapsedTime().asMilliseconds() << ", ";
+		while ( clock.getElapsedTime().asMilliseconds() < world.getTickTime() ) {}
+		std::cout << clock.restart().asMilliseconds() << std::endl;
 	}
 
 	return 0;
