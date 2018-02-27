@@ -100,7 +100,7 @@ Player::Player()
 {
 	healthMax = 50, manaMax = 50;
 	health = 50, mana = 50;
-	moveSpeed = 0.1f;
+	moveSpeed = 0.5f;
 
 	texture = "player";
 }

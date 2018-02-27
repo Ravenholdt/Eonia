@@ -64,9 +64,9 @@ int main()
 		window.display();
 		
 
-		std::cout << clock.getElapsedTime().asMilliseconds() << ", ";
+		//std::cout << clock.getElapsedTime().asMilliseconds() << ", ";
 		while ( clock.getElapsedTime().asMilliseconds() < world.getTickTime() ) {}
-		std::cout << clock.restart().asMilliseconds() << std::endl;
+		//std::cout << clock.restart().asMilliseconds() << std::endl;
 	}
 
 	return 0;

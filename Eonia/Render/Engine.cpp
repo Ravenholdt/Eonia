@@ -29,8 +29,9 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 
 	tickrate = world->getTickRate();
 
-	playerSprite = sf::Sprite();
+	/*playerSprite = sf::Sprite();
 	playerSprite.setTexture(texture.getTexture(world->getPlayerTexture()));
+	playerSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));*/
 
 }
 
@@ -94,6 +95,12 @@ void Engine::RenderWorld()
 			window->draw(text);*/
 		}
 	}
+
+	playerSprite = sf::Sprite();
+	sf::Texture textTMP;
+	textTMP.loadFromFile("Textures/Mobs/player.png");
+	playerSprite.setTexture();//texture.getTexture("player"));//world->getPlayerTexture()));
+	playerSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));
 
 	// Render the player.
 	_y = tilesY - 1 - tilesY / 2;

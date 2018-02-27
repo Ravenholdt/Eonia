@@ -24,10 +24,10 @@ World::World()
 	currentTick = 0;
 }
 
-
 World::~World()
 {
 }
+
 
 std::string World::getSquare(int x, int y)
 {
