@@ -38,9 +38,13 @@ private:
 
 	// Character Information
 	Player player;
+	sf::Sprite playerSprite;
 
 	void RenderCharacterHealth();
 	void RenderCharacterMana();
 
-	float posX, posY;
+	int posX, posY;
+	int lastPosX, lastPosY;
+	float Dx, Dy;
+	int tickrate;
 };

@@ -34,12 +34,27 @@ std::string World::getSquare(int x, int y)
 	return map[x][y].getType(); //Return the type of terrain
 }
 
-void World::getPlayerPosFloat(float& x, float& y)
+void World::getPlayerPos(int& x, int& y)
 {
-	player.getFloatPos(x, y, currentTick, tickrate);
+	player.getPos(x, y);
 }
 
-void World::moveSquare(int x, int y)
+/*void World::getPlayerLastPos(int& x, int& y)
+{
+	player.getLastPos(x, y);
+}
+
+int World::getPlayerEndMoveBy()
+{
+	return player.getEndMoveBy();
+}*/
+
+void World::getPlayerFloatPos(float& x, float& y)
+{
+	player.getFloatPos(x, y, currentTick);
+}
+
+void World::moveSquare(float x, float y)
 {
 	player.move(x, y, currentTick, tickrate);
 	//posX += x;
@@ -67,4 +82,14 @@ int World::getTick()
 int World::getTickTime()
 {
 	return ticktime;
+}
+
+int World::getTickRate()
+{
+	return tickrate;
+}
+
+std::string World::getPlayerTexture()
+{
+	return player.getTexture();
 }

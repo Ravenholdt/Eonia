@@ -13,14 +13,20 @@ public:
 	~World();
 
 	std::string getSquare(int x, int y);
-	void getPlayerPosFloat(float& x, float& y);
+	void getPlayerPos(int& x, int& y);
+	//void getPlayerLastPos(int& x, int& y);
+	//int getPlayerEndMoveBy();
+	void getPlayerFloatPos(float& x, float& y);
 
-	void moveSquare(int x, int y);
+	void moveSquare(float x, float y);
 	void setSquare(int x, int y);
 
 	int nextTick();
 	int getTick();
 	int getTickTime();
+	int getTickRate();
+
+	std::string getPlayerTexture();
 
 private:
 

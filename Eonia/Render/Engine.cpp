@@ -19,7 +19,7 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 	window = &_window;
 	world = &_world;
 
-	world->getPlayerPosFloat(posX, posY);
+	world->getPlayerPos(posX, posY);
 	Texture texture;
 
 	// Load text font
@@ -27,10 +27,19 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 
 	terrainLoad();
 
+	tickrate = world->getTickRate();
+
+	playerSprite = sf::Sprite();
+	playerSprite.setTexture(texture.getTexture(world->getPlayerTexture()));
+
 }
 
 void Engine::RenderUI()
 {
+	//world->getPlayerPos(posX, posY);
+
+	terrainUpdate(); // Update the terrain an player position
+
 	RenderWorld(); // Render the center screen
 	RenderCharacter(); // Rener the right screen
 	
@@ -46,8 +55,6 @@ void Engine::RenderWorld()
 	sf::Clock clock;
 	clock.restart();
 
-
-	terrainUpdate();
 	//std::cout << clock.restart().asMilliseconds() << ", ";
 
 	sf::Text text("Test", font);
@@ -63,8 +70,8 @@ void Engine::RenderWorld()
 
 	int tilesX = 17, tilesY = 13; // NUmber of tiles in X and Y
 
-	std::string stringX = std::to_string(posX);
-	std::string stringY = std::to_string(posY);
+	//std::string stringX = std::to_string(posX);
+	//std::string stringY = std::to_string(posY);
 
 	// Render the game map
 	for (int y = tilesY - 1; y >= 0; y--) // Needs to be inverted to start the logic position from bottom left.
@@ -74,7 +81,7 @@ void Engine::RenderWorld()
 			_y = tilesY - 1 - y;
 
 			//sprite.setTexture(texture.getTexture());
-			terrain[x][y].setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
+			terrain[x][y].setPosition(sf::Vector2f( (x - 1 + Dx)*tileSize, (_y - 1 - Dy)*tileSize) );
 			window->draw(terrain[x][y]);
 
 			// Cord text
@@ -89,6 +96,9 @@ void Engine::RenderWorld()
 	}
 
 	// Render the player.
+	_y = tilesY - 1 - tilesY / 2;
+	playerSprite.setPosition(sf::Vector2f((tilesX / 2 - 1)*tileSize, (_y - 1)*tileSize));
+	window->draw(playerSprite);
 }
 
 void Engine::RenderDebug()
@@ -97,14 +107,28 @@ void Engine::RenderDebug()
 	std::string stringX = std::to_string(posX);
 	std::string stringY = std::to_string(posY);
 
-	sf::Text text(stringX + "," + stringY, font);
+	sf::Text text(stringX, font);
 	text.setCharacterSize(30);
 	text.setPosition(sf::Vector2f(640, 70));
 	window->draw(text);
 
+	text = sf::Text(stringY, font);
+	text.setPosition(sf::Vector2f(640, 110));
+	window->draw(text);
+
 	std::string stringTick = std::to_string(world->getTick());
 	text = sf::Text (stringTick, font);
-	text.setPosition(sf::Vector2f(640, 110));
+	text.setPosition(sf::Vector2f(640, 150));
+	window->draw(text);
+
+	text = sf::Text(std::to_string(Dx), font);
+	text.setPosition(sf::Vector2f(640, 190));
+	text.setCharacterSize(10);
+	window->draw(text);
+
+	text = sf::Text(std::to_string(Dy), font);
+	text.setPosition(sf::Vector2f(640, 210));
+	text.setCharacterSize(10);
 	window->draw(text);
 }
 
@@ -142,8 +166,6 @@ void Engine::RenderCharacterMana()
 // Load the terrain
 void Engine::terrainLoad()
 {
-	world->getPlayerPosFloat(posX, posY);
-
 	float tileSize = 40;
 	int tile = 2;
 
@@ -160,15 +182,19 @@ void Engine::terrainLoad()
 // Check if the players has moved and reload the map if they have.
 void Engine::terrainUpdate()
 {
+	float tick = world->getTick();
+
+	//lastPosX = posX, lastPosY = posY; // Save old players position
+
+
+	// Update player position
+	world->getPlayerPos(posX, posY);
+	//world->getPlayerLastPos(lastPosX, lastPosY);
+
+
 	terrainLoad(); // Always update the map.
 
-	/*int x = posX, y=posY;
-	world->getPlayerPos(posX, posY);
-	x = posX - x;
-	y = posY - y;
-	if (x || y)
-	{
-		std::cout << "Moved" << std::endl;
-		terrainLoad();
-	}*/
+	world->getPlayerFloatPos(Dx, Dy);
+	Dx -= posX;
+	Dy -= posY;
 }

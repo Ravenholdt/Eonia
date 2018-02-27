@@ -15,6 +15,7 @@ Mob::~Mob() {}
 void Mob::initiate(int id)
 {
 	mobID = id;
+
 }
 
 int Mob::getMana()
@@ -38,21 +39,35 @@ void Mob::getPos(int& x, int& y)
 	y = posY;
 }
 
-void Mob::getFloatPos(float& x, float& y, int tick, int tickrate)
+void Mob::getLastPos(int& x, int& y)
 {
-	if (EndMoveBy > tick)
-	{
-		float Dx = posX - lastPosX;
-		float Dy = posY - lastPosY;
+	x = lastPosX;
+	y = lastPosY;
+}
 
-		x = posX - Dx * (EndMoveBy - tick) / tickrate;
-		y = posY - Dy * (EndMoveBy - tick) / tickrate;
-	}
-	else 
+void Mob::getFloatPos(float& x, float& y, int tick)
+{
+	float DxInt = posX - lastPosX;
+	float DyInt = posY - lastPosY;
+
+	if (DxInt || DyInt)
 	{
-		x = posX;
-		y = posY;
+		// Player Movement rendering logic.
+		if (EndMoveBy > tick)
+		{
+			x = posX + DxInt * (EndMoveBy - tick) / (EndMoveBy - BeginMoveBy);
+			y = posY + DyInt * (EndMoveBy - tick) / (EndMoveBy - BeginMoveBy);
+		}
+		else {
+			x = posX;
+			y = posY;
+		}
 	}
+}
+
+int Mob::getEndMoveBy()
+{
+	return EndMoveBy;
 }
 
 bool Mob::move(int x, int y, int tick, int moveDelay)
@@ -62,8 +77,12 @@ bool Mob::move(int x, int y, int tick, int moveDelay)
 		lastPosX = posX;
 		lastPosY = posY;
 
+
 		posX += x;
 		posY += y;
+
+		//if (!moveDelay) { lastPosX = posX, lastPosY = posY; } // If teleporting, don't keep last pos
+
 		EndMoveBy = tick + moveSpeed * moveDelay;
 		BeginMoveBy = tick;
 		return true;
@@ -71,12 +90,19 @@ bool Mob::move(int x, int y, int tick, int moveDelay)
 	return false;
 }
 
+std::string Mob::getTexture()
+{
+	return texture;
+}
+
 // Player -----------------------------
 Player::Player()
 {
 	healthMax = 50, manaMax = 50;
 	health = 50, mana = 50;
-	moveSpeed = 0.3f;
+	moveSpeed = 0.1f;
+
+	texture = "player";
 }
 
 Player::~Player() {}

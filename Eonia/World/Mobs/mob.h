@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML\System.hpp>
+#include <SFML\Graphics.hpp>
 
 class Mob
 {
@@ -10,7 +11,9 @@ public:
 
 	void initiate(int id);
 	void getPos(int& x, int& y);
-	void getFloatPos(float& x, float& y, int tick, int tickrate);
+	void getLastPos(int& x, int& y);
+	void getFloatPos(float& x, float& y, int tick);
+	int getEndMoveBy();
 
 	int getMana();
 	int getHealth();
@@ -18,6 +21,8 @@ public:
 	float getSpeed();
 
 	bool move(int x, int y, int tick, int moveDelay);
+
+	std::string getTexture();
 
 protected:
 	int mobID;
@@ -32,6 +37,9 @@ protected:
 	float moveSpeed;
 	int BeginMoveBy;
 	int EndMoveBy;
+
+	// Texture
+	std::string texture;
 
 	bool hostile;
 };
