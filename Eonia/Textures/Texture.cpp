@@ -13,6 +13,7 @@ Texture::Texture()
 
 	// Terrain
 	texture["grass"].loadFromFile("Textures/Terrain/grass.png");
+	texture["water"].loadFromFile("Textures/Terrain/water.png");
 
 	// UI
 }

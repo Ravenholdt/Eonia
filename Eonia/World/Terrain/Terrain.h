@@ -11,6 +11,8 @@ public:
 
 	std::string getType();
 
+	bool isPassable();
+
 protected:
 	std::string type;
 
@@ -26,4 +28,12 @@ class Grass : public Terrain
 public:
 	Grass();
 	~Grass();
+};
+
+
+class Water : public Terrain
+{
+public:
+	Water();
+	~Water();
 };

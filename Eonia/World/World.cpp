@@ -4,14 +4,16 @@
 
 World::World()
 {
+	Grass grass;
+	Water water;
+
 	// Generate world map.
 	for (int x = 0; x < 100; x++)
 	{
 		for (int y = 0; y < 100; y++)
 		{
-			Grass grass;
 			map[x][y] = grass;
-			if (y == 50 && x == 50) { Terrain none; map[x][y] = none; }
+			if ( abs(x+y-110) > 10 ) { map[x][y] = water; }
 		}
 	}
 
@@ -54,11 +56,16 @@ void World::getPlayerFloatPos(float& x, float& y)
 	player.getFloatPos(x, y, currentTick);
 }
 
-void World::moveSquare(float x, float y)
+bool World::moveSquare(int x, int y)
 {
-	player.move(x, y, currentTick, tickrate);
-	//posX += x;
-	//posY += y;
+	std::cout << "Moving: " << std::to_string(x) << ", " << std::to_string(y) << std::endl;
+	if (map[posX + x][posY + y].isPassable())
+	{
+		return player.move(x, y, currentTick, tickrate);
+	}
+	else {
+		return false;
+	}
 }
 
 void World::setSquare(int x, int y)

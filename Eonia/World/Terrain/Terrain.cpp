@@ -1,7 +1,6 @@
 #include "Terrain.h"
 
 
-
 Terrain::Terrain()
 {
 	type = "none";
@@ -12,14 +11,11 @@ Terrain::Terrain()
 	walkingSpeed = 1;
 }
 
-Terrain::~Terrain()
-{
-}
+Terrain::~Terrain() {}
 
-std::string Terrain::getType()
-{
-	return type;
-}
+std::string Terrain::getType() {return type;}
+
+bool Terrain::isPassable() {return passable;}
 
 
 // Grass Terrain
@@ -29,7 +25,14 @@ Grass::Grass()
 	passable = true;
 }
 
+Grass::~Grass() {}
 
-Grass::~Grass()
+
+// Water Terrain
+Water::Water()
 {
+	type = "water";
+	passable = false;
 }
+
+Water::~Water() {}

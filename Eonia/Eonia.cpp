@@ -4,6 +4,8 @@
 #include "Render\Engine.h"
 #include "World\World.h"
 
+#include "Global.h"
+
 #include <iostream>
 #include <future> // std::async
 

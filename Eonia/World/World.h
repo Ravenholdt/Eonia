@@ -18,7 +18,7 @@ public:
 	//int getPlayerEndMoveBy();
 	void getPlayerFloatPos(float& x, float& y);
 
-	void moveSquare(float x, float y);
+	bool moveSquare(int x, int y);
 	void setSquare(int x, int y);
 
 	int nextTick();

@@ -1,5 +1,7 @@
 #include "mob.h"
 
+#include "../World.h"
+
 Mob::Mob()
 {
 	healthMax = 10, manaMax = 10;
@@ -12,38 +14,18 @@ Mob::Mob()
 Mob::~Mob() {}
 
 
-void Mob::initiate(int id)
-{
-	mobID = id;
+void Mob::initiate(int id) {mobID = id;}
 
-}
+// Get Stats
+int Mob::getMana() {return mana;}
+int Mob::getHealth() {return health;}
 
-int Mob::getMana()
-{
-	return mana;
-}
+float Mob::getSpeed() {return moveSpeed;}
 
-int Mob::getHealth()
-{
-	return health;
-}
+// Get Pos
+void Mob::getPos(int& x, int& y) {x = posX; y = posY;}
+void Mob::getLastPos(int& x, int& y) {x = lastPosX; y = lastPosY;}
 
-float Mob::getSpeed()
-{
-	return moveSpeed;
-}
-
-void Mob::getPos(int& x, int& y)
-{
-	x = posX;
-	y = posY;
-}
-
-void Mob::getLastPos(int& x, int& y)
-{
-	x = lastPosX;
-	y = lastPosY;
-}
 
 void Mob::getFloatPos(float& x, float& y, int tick)
 {
@@ -65,10 +47,7 @@ void Mob::getFloatPos(float& x, float& y, int tick)
 	}
 }
 
-int Mob::getEndMoveBy()
-{
-	return EndMoveBy;
-}
+int Mob::getEndMoveBy() {return EndMoveBy;}
 
 bool Mob::move(int x, int y, int tick, int moveDelay)
 {
@@ -90,10 +69,8 @@ bool Mob::move(int x, int y, int tick, int moveDelay)
 	return false;
 }
 
-std::string Mob::getTexture()
-{
-	return texture;
-}
+std::string Mob::getTexture() {return texture;}
+
 
 // Player -----------------------------
 Player::Player()
@@ -106,6 +83,7 @@ Player::Player()
 }
 
 Player::~Player() {}
+
 
 // Rat --------------------------------
 Rat::Rat()

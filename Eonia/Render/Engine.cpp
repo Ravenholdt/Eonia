@@ -33,6 +33,7 @@ void Engine::init(sf::RenderWindow &_window, World &_world)
 	playerSprite.setTexture(texture.getTexture(world->getPlayerTexture()));
 	playerSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));*/
 
+	playerSprite = sf::Sprite();
 }
 
 void Engine::RenderUI()
@@ -96,11 +97,8 @@ void Engine::RenderWorld()
 		}
 	}
 
-	playerSprite = sf::Sprite();
-	sf::Texture textTMP;
-	textTMP.loadFromFile("Textures/Mobs/player.png");
-	playerSprite.setTexture();//texture.getTexture("player"));//world->getPlayerTexture()));
-	playerSprite.setTextureRect(sf::IntRect(0, 40, 40, 40));
+	playerSprite.setTexture(texture.getTexture(world->getPlayerTexture()));
+	playerSprite.setTextureRect(sf::IntRect(0, 0, 40, 40));
 
 	// Render the player.
 	_y = tilesY - 1 - tilesY / 2;
