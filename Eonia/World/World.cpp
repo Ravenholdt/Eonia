@@ -13,12 +13,13 @@ World::World()
 		for (int y = 0; y < 100; y++)
 		{
 			map[x][y] = Grass();
-			if ( x > 55 ) { map[x][y] = Water(); }
+			if ( x < 45 ) { map[x][y] = Water(); }
 		}
 	}
 
 	// Load caracter.
 	player = Player();
+	player.getPos(posX, posY);
 
 	// Set up tick rate.
 	tickrate = 60; // Ticks per second.
@@ -56,11 +57,12 @@ void World::getPlayerFloatPos(float& x, float& y)
 
 bool World::moveSquare(int x, int y)
 {
-	std::cout << "Moving: " << std::to_string(x) << ", " << std::to_string(y) << std::endl;
+	player.getPos(posX, posY);
+	//std::cout << "Moving: " << std::to_string(posX + x) << ", " << std::to_string(posY + y) << std::endl;
 	if (map[posX + x][posY + y].isPassable())
 	//if (map[posX + x][posY + y].passable)
 	{
-		std::cout << map[posX + x][posX + x].getType() << std::endl;
+		//std::cout << map[posX + x][posX + x].getType() << std::endl;
 		return player.move(x, y, currentTick, tickrate);
 	}
 	else {

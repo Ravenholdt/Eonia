@@ -15,7 +15,7 @@ Terrain::~Terrain() {}
 
 std::string Terrain::getType() {return type;}
 
-bool Terrain::isPassable() {return true;}
+bool Terrain::isPassable() {return passable;}
 
 
 // Grass Terrain

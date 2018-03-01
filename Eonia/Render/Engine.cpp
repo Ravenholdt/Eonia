@@ -90,11 +90,11 @@ void Engine::RenderWorld()
 			terrain[x][y].setPosition(sf::Vector2f( (x - 1 + Dx)*tileSize, (_y - 1 - Dy)*tileSize) );
 			window->draw(terrain[x][y]);
 
-			// Cord text
-			/*stringX = std::to_string(x + posX - 8);
-			stringY = std::to_string(y + posY - 6);
+			/*// Cord text
+			std::string stringX = std::to_string(x + posX - 8);
+			std::string stringY = std::to_string(y + posY - 6);
 			sf::Text text(stringX + "," + stringY, font);
-			text.setPosition(sf::Vector2f((x - 1)*tileSize, (_y - 1)*tileSize));
+			text.setPosition(sf::Vector2f((x - 1 + Dx)*tileSize, (_y - 1 - Dy)*tileSize));
 			text.setCharacterSize(9);
 
 			window->draw(text);*/

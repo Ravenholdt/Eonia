@@ -32,8 +32,7 @@ private:
 
 	Player player;
 
-	int posX;
-	int posY;
+	int posX, posY;
 
 	// Frames per second settings
 	int tickrate;
