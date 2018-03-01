@@ -12,12 +12,13 @@ public:
 	std::string getType();
 
 	bool isPassable();
+	bool passable;
 
 protected:
 	std::string type;
 
-	bool passable;
-	bool cutable;
+	
+	//bool cutable;
 
 	float walkingSpeed;
 };

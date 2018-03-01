@@ -43,6 +43,7 @@ private:
 	void RenderCharacterHealth();
 	void RenderCharacterMana();
 
+	int playerOffsetX, playerOffsetY;
 	int posX, posY;
 	int lastPosX, lastPosY;
 	float Dx, Dy;

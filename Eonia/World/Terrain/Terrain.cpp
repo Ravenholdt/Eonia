@@ -6,7 +6,7 @@ Terrain::Terrain()
 	type = "none";
 
 	passable = false;
-	cutable = false;
+	//cutable = false;
 
 	walkingSpeed = 1;
 }
@@ -15,7 +15,7 @@ Terrain::~Terrain() {}
 
 std::string Terrain::getType() {return type;}
 
-bool Terrain::isPassable() {return passable;}
+bool Terrain::isPassable() {return true;}
 
 
 // Grass Terrain

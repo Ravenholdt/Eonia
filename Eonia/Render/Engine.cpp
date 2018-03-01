@@ -8,9 +8,13 @@
 //#include "Textures\Sprite.h"
 
 #include "..\World\World.h"
-//#include "..\World\Terrain\Terrain.h"
+#include "..\World\Terrain\Terrain.h"
 
-Engine::Engine() { posX = 0; posY = 0; }
+Engine::Engine() 
+{
+	posX = 0; posY = 0; 
+	playerOffsetX = 9, playerOffsetY = 7;
+}
 
 Engine::~Engine(){}
 
@@ -178,7 +182,7 @@ void Engine::terrainLoad()
 	{
 		for (int y = 0; y < 13; y++)
 		{
-			terrain[x][y].setTexture( texture.getTexture( world->getSquare(x + posX, y + posY) ) );
+			terrain[x][y].setTexture( texture.getTexture( world->getSquare(x + posX - playerOffsetX, y + posY - playerOffsetY) ) );
 			terrain[x][y].setTextureRect( sf::IntRect(tileSize*(tile), 0, tileSize, tileSize) );
 		}
 	}

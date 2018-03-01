@@ -4,16 +4,16 @@
 
 World::World()
 {
-	Grass grass;
-	Water water;
+	//grass = Grass();
+	//water = Water();
 
 	// Generate world map.
 	for (int x = 0; x < 100; x++)
 	{
 		for (int y = 0; y < 100; y++)
 		{
-			map[x][y] = grass;
-			if ( abs(x+y-110) > 10 ) { map[x][y] = water; }
+			map[x][y] = Grass();
+			if ( x > 55 ) { map[x][y] = Water(); }
 		}
 	}
 
@@ -26,9 +26,7 @@ World::World()
 	currentTick = 0;
 }
 
-World::~World()
-{
-}
+World::~World() {}
 
 
 std::string World::getSquare(int x, int y)
@@ -60,7 +58,9 @@ bool World::moveSquare(int x, int y)
 {
 	std::cout << "Moving: " << std::to_string(x) << ", " << std::to_string(y) << std::endl;
 	if (map[posX + x][posY + y].isPassable())
+	//if (map[posX + x][posY + y].passable)
 	{
+		std::cout << map[posX + x][posX + x].getType() << std::endl;
 		return player.move(x, y, currentTick, tickrate);
 	}
 	else {

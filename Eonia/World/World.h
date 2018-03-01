@@ -42,4 +42,7 @@ private:
 
 	Terrain map[100][100];
 	//std::map<std::string, Terrain> Map;
+
+	Grass grass;
+	Water water;
 };
