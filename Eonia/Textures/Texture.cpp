@@ -8,6 +8,8 @@ Texture::Texture()
 
 	// Mobs
 	texture["player"].loadFromFile("Textures/Mobs/player.png");
+	texture["snake"].loadFromFile("Textures/Mobs/snake.png");
+	texture["rat"].loadFromFile("Textures/Mobs/rat.png");
 
 	// Structures
 
