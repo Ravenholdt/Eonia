@@ -2,6 +2,8 @@
 
 #include "../World.h"
 
+#include <iostream>
+
 Mob::Mob()
 {
 	healthMax = 10, manaMax = 10;
@@ -59,6 +61,8 @@ bool Mob::move(int x, int y, int tick, int moveDelay)
 
 		posX += x;
 		posY += y;
+
+		//std::cout << std::to_string(posX) << ", " << std::to_string(posY) << std::endl;
 
 		//if (!moveDelay) { lastPosX = posX, lastPosY = posY; } // If teleporting, don't keep last pos
 

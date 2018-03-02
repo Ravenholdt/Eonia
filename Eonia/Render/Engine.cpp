@@ -13,7 +13,7 @@
 Engine::Engine() 
 {
 	posX = 0; posY = 0; 
-	playerOffsetX = 9, playerOffsetY = 7;
+	playerOffsetX = 8, playerOffsetY = 6;
 }
 
 Engine::~Engine(){}
@@ -176,7 +176,7 @@ void Engine::RenderCharacterMana()
 void Engine::terrainLoad()
 {
 	float tileSize = 40;
-	int tile = 2;
+	int tile = 0;
 
 	for (int x = 0; x < 17; x++)
 	{

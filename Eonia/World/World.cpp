@@ -4,22 +4,20 @@
 
 World::World()
 {
-	//grass = Grass();
-	//water = Water();
-
 	// Generate world map.
-	for (int x = 0; x < 100; x++)
+	for (int x = 0; x < worldWidth; x++)
 	{
-		for (int y = 0; y < 100; y++)
+		for (int y = 0; y < worldHeight; y++)
 		{
-			map[x][y] = Grass();
-			if ( x < 45 ) { map[x][y] = Water(); }
+			map[x][y] = grass;
+			if ( x < 45 ) { map[x][y] = water; }
 		}
 	}
 
 	// Load caracter.
 	player = Player();
 	player.getPos(posX, posY);
+
 
 	// Set up tick rate.
 	tickrate = 60; // Ticks per second.
@@ -40,16 +38,6 @@ void World::getPlayerPos(int& x, int& y)
 	player.getPos(x, y);
 }
 
-/*void World::getPlayerLastPos(int& x, int& y)
-{
-	player.getLastPos(x, y);
-}
-
-int World::getPlayerEndMoveBy()
-{
-	return player.getEndMoveBy();
-}*/
-
 void World::getPlayerFloatPos(float& x, float& y)
 {
 	player.getFloatPos(x, y, currentTick);
@@ -59,10 +47,9 @@ bool World::moveSquare(int x, int y)
 {
 	player.getPos(posX, posY);
 	//std::cout << "Moving: " << std::to_string(posX + x) << ", " << std::to_string(posY + y) << std::endl;
+	//std::cout << map[posX + x][posX + x].getType() << std::endl;
 	if (map[posX + x][posY + y].isPassable())
-	//if (map[posX + x][posY + y].passable)
 	{
-		//std::cout << map[posX + x][posX + x].getType() << std::endl;
 		return player.move(x, y, currentTick, tickrate);
 	}
 	else {
